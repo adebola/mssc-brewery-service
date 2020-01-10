@@ -30,10 +30,10 @@ public class BeerController {
     public ResponseEntity<BeerDto> saveNewBeer(@RequestBody @Validated BeerDto beerDto) {
 
         BeerDto saveDto = beerService.saveNewBeer(beerDto);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("location", "/api/v1/beer/" + saveDto.getId().toString() );
 
-        log.info("Project Lomback Logging");
+        HttpHeaders headers = new HttpHeaders();
+        // headers.add("location", "/api/v1/beer/" + saveDto.getId().toString() );
+        headers.add("location", "/api/v1/beer/" + UUID.randomUUID().toString());
 
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }

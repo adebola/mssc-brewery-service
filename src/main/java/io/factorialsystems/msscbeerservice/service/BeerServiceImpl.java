@@ -5,6 +5,7 @@ import io.factorialsystems.msscbeerservice.web.model.BeerStyleEnum;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -27,7 +28,18 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public BeerDto saveNewBeer(BeerDto beerDto) {
-        return null;
+
+        return BeerDto.builder()
+                .id(UUID.randomUUID())
+                .createdDate(OffsetDateTime.now())
+                .lastModifiedDate(OffsetDateTime.now())
+                .beerStyle(BeerStyleEnum.ALE)
+                .beerName("Budweiser")
+                .price(new BigDecimal(12.95))
+                .QuantityOnHand(10)
+                .upc(123456789L)
+                .version(2)
+                .build();
     }
 
     @Override
